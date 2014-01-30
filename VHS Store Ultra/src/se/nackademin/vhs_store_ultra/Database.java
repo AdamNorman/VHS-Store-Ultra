@@ -3,6 +3,7 @@ package se.nackademin.vhs_store_ultra;
 //NiclasBerner IS COMMITING!
 //HEJ!
 
+// 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,6 +11,7 @@ import java.sql.Statement;
 
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 
+// Vår fina databas :)
 public class Database {
 
 	public static void main(String[] args) {
