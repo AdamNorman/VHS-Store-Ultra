@@ -10,12 +10,12 @@ public class Database {
 		MysqlDataSource ds = new MysqlDataSource();
 		ds.setServerName("localhost");
 		ds.setPort(3306);
-		ds.setDatabaseName("soccer_club");
+		ds.setDatabaseName("vhs_store_ultra");
 
 		Connection con = null;
 		try {
 			//DO NOT SHOW PASSWORD IN YOUR CODE IN YOUR REAL APPLICATION
-			con = ds.getConnection("tester", "test");
+			con = ds.getConnection("root", "");
 		} catch (SQLException e) {
 			System.err.println("Error: Couldn't connect. " + e.getMessage());
 			return;
@@ -46,7 +46,7 @@ public class Database {
 //			System.out.println("Affected rows: " + affectedRows);
 			
 			//SELECT
-			results = queryCaller.executeQuery("SELECT * FROM person");
+			results = queryCaller.executeQuery("SELECT * FROM customer");
 			System.out.println("Print first row:");
 			results.first();
 			System.out.println(results.getString("name"));
@@ -80,10 +80,10 @@ public class Database {
 		
 		//BATCH
 		try {
-			queryCaller.addBatch("INSERT INTO person VALUES('800313', 'Jennie', '08112233')");
-			queryCaller.addBatch("INSERT INTO person VALUES('800314', 'Raynold', '08112233')");
-			queryCaller.addBatch("INSERT INTO person VALUES('800315', 'Patric', '08112233')");
-			queryCaller.addBatch("DELETE FROM person WHERE personid='800315'");
+			queryCaller.addBatch("INSERT INTO customer VALUES('800313', 'Jennie', '08112233')");
+			queryCaller.addBatch("INSERT INTO customer VALUES('800314', 'Raynold', '08112233')");
+			queryCaller.addBatch("INSERT INTO customer VALUES('800315', 'Patric', '08112233')");
+			queryCaller.addBatch("DELETE FROM customer WHERE personid='800315'");
 			queryCaller.executeBatch();
 			System.out.println("Batching success!");
 		} catch (SQLException e1) {
@@ -94,7 +94,7 @@ public class Database {
 		PreparedStatement preparedStm = null;
 		try {
 			String nameInput = "Anna";
-			preparedStm = con.prepareStatement("INSERT INTO person VALUES(?, ?, '08112233')");
+			preparedStm = con.prepareStatement("INSERT INTO customer VALUES(?, ?, '08112233')");
 			preparedStm.setInt(1, 871111);
 			preparedStm.setString(2, nameInput);
 			preparedStm.executeUpdate();
@@ -127,9 +127,9 @@ public class Database {
 			//Our new transaction starts----
 			int maxChanges = 5;
 			int nChanges = 0;
-			nChanges += queryCaller.executeUpdate("INSERT INTO person VALUES('901012', 'Yvonne', '08292929')");
-			nChanges += queryCaller.executeUpdate("UPDATE person SET phone='08080808' WHERE name='Yvonne'");
-			nChanges += queryCaller.executeUpdate("INSERT INTO person VALUES('901013', 'Martin', '08292929')");
+			nChanges += queryCaller.executeUpdate("INSERT INTO customer VALUES('901012', 'Yvonne', '08292929')");
+			nChanges += queryCaller.executeUpdate("UPDATE customer SET phonenumber='08080808' WHERE name='Yvonne'");
+			nChanges += queryCaller.executeUpdate("INSERT INTO customer VALUES('901013', 'Martin', '08292929')");
 			
 			if(nChanges > maxChanges){
 				//Transaction ends. New transaction starts.
