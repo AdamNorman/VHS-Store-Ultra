@@ -3,6 +3,7 @@ package se.nackademin.vhs_store_ultra;
 
 import java.awt.EventQueue;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
@@ -19,6 +20,8 @@ import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+
+import javax.swing.JLabel;
 
 public class UserGUI {
 
@@ -55,61 +58,45 @@ public class UserGUI {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 495, 335);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		textF_userN = new JTextField();
 		textF_userN.setColumns(10);
-		textF_userN.setBounds(335, 177, 89, 20);
+		textF_userN.setBounds(380, 212, 89, 20);
 		frame.getContentPane().add(textF_userN);
 		
 		JTextArea txtrAnvndarnam = new JTextArea();
 		txtrAnvndarnam.setText("Anv\u00E4ndarnamn:");
 		txtrAnvndarnam.setEditable(false);
 		txtrAnvndarnam.setBackground(SystemColor.menu);
-		txtrAnvndarnam.setBounds(221, 179, 108, 22);
+		txtrAnvndarnam.setBounds(266, 210, 108, 22);
 		frame.getContentPane().add(txtrAnvndarnam);
 		
 		JTextArea txtrLsenord = new JTextArea();
 		txtrLsenord.setText("L\u00F6senord:");
 		txtrLsenord.setEditable(false);
 		txtrLsenord.setBackground(SystemColor.menu);
-		txtrLsenord.setBounds(253, 200, 76, 22);
+		txtrLsenord.setBounds(298, 234, 76, 22);
 		frame.getContentPane().add(txtrLsenord);
 		
-		JTextArea textArea_2 = new JTextArea();
-		textArea_2.setText("VHS Store Ultra");
-		textArea_2.setFont(new Font("GulimChe", Font.PLAIN, 35));
-		textArea_2.setEditable(false);
-		textArea_2.setBackground(SystemColor.menu);
-		textArea_2.setBounds(10, 11, 279, 38);
-		frame.getContentPane().add(textArea_2);
-		
-		JTextArea textArea_3 = new JTextArea();
-		textArea_3.setText("- retroer than Retro");
-		textArea_3.setFont(new Font("GulimChe", Font.ITALIC, 20));
-		textArea_3.setEditable(false);
-		textArea_3.setBackground(SystemColor.menu);
-		textArea_3.setBounds(75, 51, 214, 28);
-		frame.getContentPane().add(textArea_3);
-		
 		passwordField = new JPasswordField();
-		passwordField.setBounds(335, 201, 89, 20);
+		passwordField.setBounds(380, 236, 89, 20);
 		frame.getContentPane().add(passwordField);
 		
 		JTextArea txtrMedlem = new JTextArea();
 		txtrMedlem.setText("Inte medlem?");
 		txtrMedlem.setEditable(false);
 		txtrMedlem.setBackground(SystemColor.menu);
-		txtrMedlem.setBounds(10, 201, 106, 22);
+		txtrMedlem.setBounds(10, 236, 106, 22);
 		frame.getContentPane().add(txtrMedlem);
 		
 		textF_Name = new JTextField();
 		textF_Name.setText("skriv in din mail");
 		textF_Name.setHorizontalAlignment(SwingConstants.CENTER);
 		textF_Name.setColumns(10);
-		textF_Name.setBounds(10, 227, 112, 23);
+		textF_Name.setBounds(10, 262, 112, 23);
 		frame.getContentPane().add(textF_Name);
 		
 		JButton ansökButton = new JButton("Ans\u00F6k");
@@ -132,12 +119,24 @@ public class UserGUI {
 				*/
 			}
 		});
-		ansökButton.setBounds(125, 227, 89, 23);
+		ansökButton.setBounds(125, 262, 89, 23);
 		frame.getContentPane().add(ansökButton);
 		
 		JButton button_1 = new JButton("Logga in");
-		button_1.setBounds(335, 227, 89, 23);
+		button_1.setBounds(380, 262, 89, 23);
 		frame.getContentPane().add(button_1);
-	}
+		
+		JLabel lblNewLabel = new JLabel("New label!!!!!!!!!!!!!!!!!!!!!!!!!");
+		lblNewLabel.setLocation(69, 11);
+		
+		//JLabel lblNewLabel = new JLabel();
 
+		
+		ImageIcon icon = new ImageIcon("img/vhs_logo.png"); 
+		lblNewLabel.setIcon(icon);
+		
+		//lblNewLabel.setBounds(10, 11, 252, 135);
+		lblNewLabel.setSize(326, 179);
+		frame.getContentPane().add(lblNewLabel);
+	}
 }
