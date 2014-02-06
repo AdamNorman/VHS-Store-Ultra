@@ -127,7 +127,7 @@ public class UserGUI {
 		button_1.setBounds(380, 262, 89, 23);
 		frame.getContentPane().add(button_1);
 		
-		JLabel lblNewLabel = new JLabel("New label!!!!!!!!!!!!!!!!!!!!!!!!!");
+		JLabel lblNewLabel = new JLabel();
 		lblNewLabel.setLocation(69, 11);
 		
 		//JLabel lblNewLabel = new JLabel();
