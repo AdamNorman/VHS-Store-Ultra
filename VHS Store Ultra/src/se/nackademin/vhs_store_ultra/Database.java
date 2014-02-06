@@ -1,7 +1,6 @@
 package se.nackademin.vhs_store_ultra;
 
 import java.sql.*;
-
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 
 public class Database {
