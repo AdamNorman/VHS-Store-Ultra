@@ -60,6 +60,8 @@ public class UserGUI {
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.setTitle("VHS Store Ultra");
+		frame.setResizable(false);
 		
 		textF_userN = new JTextField();
 		textF_userN.setColumns(10);
