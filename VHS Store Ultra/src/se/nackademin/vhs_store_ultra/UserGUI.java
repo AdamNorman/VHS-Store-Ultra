@@ -1,27 +1,25 @@
 package se.nackademin.vhs_store_ultra;
 
-
-import java.awt.EventQueue;
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
 
+import java.awt.EventQueue;
 import java.awt.SystemColor;
 import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 import javax.swing.JPasswordField;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import javax.swing.JLabel;
 
 public class UserGUI {
 
@@ -59,6 +57,7 @@ public class UserGUI {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 495, 335);
+		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
