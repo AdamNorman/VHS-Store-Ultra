@@ -19,6 +19,8 @@ import javax.swing.JLabel;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 
 public class UserGUI {
@@ -92,6 +94,14 @@ public class UserGUI {
 		frame.getContentPane().add(txtrMedlem);
 		
 		textF_Name = new JTextField();
+		textF_Name.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				textF_Name.setText("");
+
+				
+			}
+		});
 		textF_Name.setText("skriv in din mail");
 		textF_Name.setHorizontalAlignment(SwingConstants.CENTER);
 		textF_Name.setColumns(10);
@@ -125,7 +135,7 @@ public class UserGUI {
 		button_1.setBounds(380, 262, 89, 23);
 		frame.getContentPane().add(button_1);
 		
-		JLabel lblNewLabel = new JLabel("New label!!!!!!!!!!!!!!!!!!!!!!!!!");
+		JLabel lblNewLabel = new JLabel();
 		lblNewLabel.setLocation(69, 11);
 		
 		//JLabel lblNewLabel = new JLabel();
@@ -139,3 +149,5 @@ public class UserGUI {
 		frame.getContentPane().add(lblNewLabel);
 	}
 }
+
+//
