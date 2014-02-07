@@ -7,7 +7,7 @@ import java.awt.event.*;
 public class Customer extends JFrame {
 
 	public static void main(String[] args) {
-		Customer frameTabel = new Customer();
+		new Customer();
 	}
 
 	JPanel panel = new JPanel();
@@ -30,5 +30,3 @@ public class Customer extends JFrame {
 	}
 
 }
-
-//
