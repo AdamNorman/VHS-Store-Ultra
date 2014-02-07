@@ -5,6 +5,9 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class Customer extends JFrame {
+	
+	//Auto-generated sUID
+	private static final long serialVersionUID = 1L;
 
 	public static void main(String[] args) {
 		new Customer();
