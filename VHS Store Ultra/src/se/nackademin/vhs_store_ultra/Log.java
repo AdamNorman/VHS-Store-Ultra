@@ -62,3 +62,5 @@ public class Log extends JFrame {
 		});
 	}
 }
+
+//
