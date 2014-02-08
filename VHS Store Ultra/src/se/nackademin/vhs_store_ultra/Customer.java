@@ -29,7 +29,6 @@ public class Customer extends JFrame {
 		testBtn.setBounds(88, 100, 89, 23);
 		custPanel.add(testBtn);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setVisible(true);
 	}
 	
 }
