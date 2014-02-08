@@ -8,28 +8,28 @@ public class StoreStaff extends JFrame {
 	
 	//Auto-generated sUID
 	private static final long serialVersionUID = 1L;
+	private JPanel staffPanel;
+	private JButton clickBtn;
 	
 	public static void main(String[] args) {
 		new StoreStaff();
 	}
-
-	JPanel panel = new JPanel();
-
+	
 	public StoreStaff() {
-		super("Welcome");
+		super("Welcome to staffs site");
 		setSize(300, 200);
 		setLocation(500, 280);
 		getContentPane().setLayout(null);
-		panel.setBounds(0, 0, 284, 161);
-		panel.setLayout(null);
-
-		getContentPane().add(panel);
-
-		JButton btnNewButton = new JButton("Klick!");
-		btnNewButton.setBounds(88, 100, 89, 23);
-		panel.add(btnNewButton);
+		staffPanel = new JPanel();
+		staffPanel.setBounds(0, 0, 284, 161);
+		staffPanel.setLayout(null);
+		getContentPane().add(staffPanel);
+		
+		clickBtn = new JButton("Click me!");
+		clickBtn.setBounds(88, 100, 89, 23);
+		staffPanel.add(clickBtn);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 	}
-
+	
 }

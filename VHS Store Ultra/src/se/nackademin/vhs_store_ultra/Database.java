@@ -10,7 +10,7 @@ public class Database {
 		ds.setServerName("localhost");
 		ds.setPort(3306);
 		ds.setDatabaseName("vhs_store_ultra");
-
+		
 		Connection con = null;
 		try {
 			//DO NOT SHOW PASSWORD IN YOUR CODE IN YOUR REAL APPLICATION
@@ -55,7 +55,7 @@ public class Database {
 			while(results.next()){
 				System.out.println(results.getString("name"));
 			}
-
+			
 			//MetaData
 			ResultSetMetaData resultInfo = results.getMetaData();
 			int nCols = resultInfo.getColumnCount();
@@ -70,8 +70,6 @@ public class Database {
 				}
 				System.out.println();
 			}
-			
-			
 			
 		} catch (SQLException e) {
 			System.err.println("SQL query failed! " + e.getMessage());
@@ -181,6 +179,4 @@ public class Database {
 		}
 	}
 	
-	
-
 }

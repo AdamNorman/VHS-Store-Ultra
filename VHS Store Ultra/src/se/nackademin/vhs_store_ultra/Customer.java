@@ -8,28 +8,28 @@ public class Customer extends JFrame {
 	
 	//Auto-generated sUID
 	private static final long serialVersionUID = 1L;
-
+	private JPanel custPanel;
+	private JButton testBtn;
+	
 	public static void main(String[] args) {
 		new Customer();
 	}
-
-	JPanel panel = new JPanel();
-
+	
 	public Customer() {
-		super("Welcome");
+		super("Welcome to customers site");
 		setSize(300, 200);
 		setLocation(500, 280);
 		getContentPane().setLayout(null);
-		panel.setBounds(0, 0, 284, 161);
-		panel.setLayout(null);
-
-		getContentPane().add(panel);
-
-		JButton btnNewButton = new JButton("Klick!");
-		btnNewButton.setBounds(88, 100, 89, 23);
-		panel.add(btnNewButton);
+		custPanel = new JPanel();
+		custPanel.setBounds(0, 0, 284, 161);
+		custPanel.setLayout(null);
+		getContentPane().add(custPanel);
+		
+		testBtn = new JButton("Test me!");
+		testBtn.setBounds(88, 100, 89, 23);
+		custPanel.add(testBtn);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 	}
-
+	
 }
