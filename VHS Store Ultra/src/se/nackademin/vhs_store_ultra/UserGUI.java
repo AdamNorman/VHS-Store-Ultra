@@ -125,8 +125,7 @@ public class UserGUI {
 				String uName = userTxtField.getText();
 				String pWord = passField.getText();
 				if (uName.equals("Sebbe") && pWord.equals("123")) {
-					Customer regFace = new Customer();
-					regFace.setVisible(true);
+					new Customer();
 					frame.dispose();
 				} else {
 					JOptionPane.showMessageDialog(null, "Wrong username or password!");
