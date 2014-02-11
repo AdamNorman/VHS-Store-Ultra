@@ -5,31 +5,64 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class StoreStaff extends JFrame {
-	
-	//Auto-generated sUID
+
 	private static final long serialVersionUID = 1L;
-	private JPanel staffPanel;
-	private JButton clickBtn;
-	
+
 	public static void main(String[] args) {
 		new StoreStaff();
 	}
-	
+
+	JTextArea movieTextArea = new JTextArea();
+	JButton moviesButton = new JButton("Delete customer");
+	Database db1 = new Database();
+
 	public StoreStaff() {
-		super("Welcome to staffs site");
-		setSize(300, 200);
+		super("Store Staff");
+		setResizable(false);
+		setSize(444, 339);
 		setLocation(500, 280);
 		getContentPane().setLayout(null);
-		staffPanel = new JPanel();
-		staffPanel.setBounds(0, 0, 284, 161);
-		staffPanel.setLayout(null);
-		getContentPane().add(staffPanel);
-		
-		clickBtn = new JButton("Click me!");
-		clickBtn.setBounds(88, 100, 89, 23);
-		staffPanel.add(clickBtn);
+
+		moviesButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				//db1.getAllMovies();
+
+				// movieTextArea.append(db1.getAllMovies());
+			}
+		});
+		moviesButton.setBounds(10, 61, 134, 23);
+		getContentPane().add(moviesButton);
+		movieTextArea.setWrapStyleWord(true);
+		movieTextArea.setLineWrap(true);
+
+		movieTextArea.setBounds(154, 11, 264, 278);
+		getContentPane().add(movieTextArea);
+
+		JButton btnCreateCustomer = new JButton("Create customer");
+		btnCreateCustomer.setBounds(10, 12, 134, 23);
+		getContentPane().add(btnCreateCustomer);
+
+		JButton btnUpdateCustomer = new JButton("Update customer");
+		btnUpdateCustomer.setBounds(10, 111, 134, 23);
+		getContentPane().add(btnUpdateCustomer);
+
+		JButton btnTopMovies = new JButton("Top 10 Movies");
+		btnTopMovies.setBounds(10, 154, 134, 23);
+		getContentPane().add(btnTopMovies);
+
+		JButton btnInStore = new JButton("In store");
+		btnInStore.setBounds(10, 195, 134, 23);
+		getContentPane().add(btnInStore);
+
+		JButton btnOrders = new JButton("Orders");
+		btnOrders.setBounds(10, 229, 134, 23);
+		getContentPane().add(btnOrders);
+
+		JButton btnLogOut = new JButton("Log out");
+		btnLogOut.setBounds(10, 266, 134, 23);
+		getContentPane().add(btnLogOut);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 	}
-	
 }
