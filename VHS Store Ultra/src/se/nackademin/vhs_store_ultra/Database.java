@@ -1,6 +1,7 @@
 package se.nackademin.vhs_store_ultra;
 
 import java.sql.*;
+
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 
 public class Database {
@@ -37,6 +38,9 @@ public class Database {
 		
 		System.out.println("Create statement successful!");
 		
+        //Statement sqlState = con.createStatement();
+
+		
 		ResultSet results = null;
 				
 		try {
@@ -45,13 +49,42 @@ public class Database {
 //			System.out.println("Affected rows: " + affectedRows);
 			
 			//SELECT
-			results = queryCaller.executeQuery("SELECT * FROM customer");
-			System.out.println("Print first row:");
-			results.first();
-			System.out.println(results.getString("name"));
 			
+			//String selectStuff = "SELECT * FROM sort_titles_genre";
+			
+            //results = queryCaller.executeQuery(selectStuff);
+
+			
+			results = queryCaller.executeQuery("SELECT * FROM sort_titles_genre");
+			//System.out.println("Print first row:");
+			results.first();
+			//System.out.println(results);
+			System.out.print("Movie genres: \n" + results.getString("title") + " " + results.getString("genre"));
+		} catch (SQLException e) {
+			System.err.println("SQL query failed! " + e.getMessage());
+		}
+		//Close the result set and statement
+			if(results != null){
+				try {
+					results.close();
+				} catch (SQLException e) {
+					System.err.println("Close result set failed! " + e.getMessage());
+				}
+			}
+			if(queryCaller != null){
+				try {
+					queryCaller.close();
+				} catch (SQLException e) {
+					System.err.println("Close statement failed! " + e.getMessage());
+				}
+			}	
+			
+			/*
+
 			System.out.println("Print all rows:");
 			results.beforeFirst();
+			
+			
 			while(results.next()){
 				System.out.println(results.getString("name"));
 			}
@@ -70,11 +103,10 @@ public class Database {
 				}
 				System.out.println();
 			}
+			*/
 			
-		} catch (SQLException e) {
-			System.err.println("SQL query failed! " + e.getMessage());
-		}
-		
+
+		/*
 		//BATCH
 		try {
 			queryCaller.addBatch("INSERT INTO customer VALUES('800313', 'Jennie', '08112233')");
@@ -177,6 +209,8 @@ public class Database {
 				System.out.println("Warning: Couldn't close the connection.");
 			}
 		}
+		
+		*/
 	}
 	
 }
