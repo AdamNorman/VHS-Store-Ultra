@@ -58,11 +58,22 @@ public class Database {
 			results = queryCaller.executeQuery("SELECT * FROM sort_titles_genre");
 			//System.out.println("Print first row:");
 			results.first();
-			//System.out.println(results);
-			System.out.print("Movie genres: \n" + results.getString("title") + " " + results.getString("genre"));
+//			results.beforeFirst();
+			
+			
+//			System.out.println(results);
+			//System.out.print(results.getString("title") + results.getString("genre"));
+			
+			while(results.next()){
+				System.out.println(results.getString("title") + "				" + results.getString("genre"));
+			}
 		} catch (SQLException e) {
 			System.err.println("SQL query failed! " + e.getMessage());
 		}
+		
+		
+		
+		
 		//Close the result set and statement
 			if(results != null){
 				try {

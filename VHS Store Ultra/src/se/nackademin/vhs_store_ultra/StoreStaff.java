@@ -73,9 +73,7 @@ public class StoreStaff extends JFrame {
 		btnLogOut.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				UserGUI regFace = new UserGUI();
-				//regFace.setVisible(true);
-				// regFace.initialize();
-				// User_frame.dispose();
+
 				dispose();
 			}
 		});

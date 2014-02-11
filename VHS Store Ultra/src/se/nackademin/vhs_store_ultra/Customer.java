@@ -69,9 +69,7 @@ public class Customer extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 
 				UserGUI regFace = new UserGUI();
-				//regFace.setVisible(true);
-				// regFace.initialize();
-				// User_frame.dispose();
+
 				dispose();
 
 			}

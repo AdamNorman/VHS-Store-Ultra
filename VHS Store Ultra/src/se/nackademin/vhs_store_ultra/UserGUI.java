@@ -167,7 +167,6 @@ public class UserGUI {
 				String ppaswd = passField.getText();
 				if (puname.equals("123") && ppaswd.equals("123")) {
 					Customer regFace = new Customer();
-					// regFace.setVisible(true);
 					frame.dispose();
 				} else if (puname.equals("456") && ppaswd.equals("456")) {
 					StoreStaff regFace = new StoreStaff();
