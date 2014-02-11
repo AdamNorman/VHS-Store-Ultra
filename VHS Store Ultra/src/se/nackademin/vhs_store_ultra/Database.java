@@ -1,7 +1,6 @@
 package se.nackademin.vhs_store_ultra;
 
 import java.sql.*;
-
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 
 public class Database {
@@ -45,56 +44,40 @@ public class Database {
 				
 		try {
 			//INSERT
-//			int affectedRows = queryCaller.executeUpdate("INSERT INTO person VALUES('800312', 'Lionel', '08112233')");
-//			System.out.println("Affected rows: " + affectedRows);
+			//int affectedRows = queryCaller.executeUpdate("INSERT INTO person VALUES('800312', 'Lionel', '08112233')");
+			//System.out.println("Affected rows: " + affectedRows);
 			
 			//SELECT
-			
-			//String selectStuff = "SELECT * FROM sort_titles_genre";
-			
-            //results = queryCaller.executeQuery(selectStuff);
-
-			
-			results = queryCaller.executeQuery("SELECT * FROM sort_titles_genre");
+			results = queryCaller.executeQuery("SELECT * FROM Sort_genre_action");
 			//System.out.println("Print first row:");
 			results.first();
-//			results.beforeFirst();
 			
-			
-//			System.out.println(results);
-			//System.out.print(results.getString("title") + results.getString("genre"));
-			
-			while(results.next()){
-				System.out.println(results.getString("title") + "				" + results.getString("genre"));
+			while(results.next()) {
+				System.out.println(results.getString("title") + ", " + results.getString("genre"));
 			}
 		} catch (SQLException e) {
 			System.err.println("SQL query failed! " + e.getMessage());
 		}
 		
-		
-		
-		
 		//Close the result set and statement
-			if(results != null){
+			if(results != null) {
 				try {
 					results.close();
 				} catch (SQLException e) {
 					System.err.println("Close result set failed! " + e.getMessage());
 				}
 			}
-			if(queryCaller != null){
+			if(queryCaller != null) {
 				try {
 					queryCaller.close();
 				} catch (SQLException e) {
 					System.err.println("Close statement failed! " + e.getMessage());
 				}
-			}	
+			}
 			
 			/*
-
 			System.out.println("Print all rows:");
 			results.beforeFirst();
-			
 			
 			while(results.next()){
 				System.out.println(results.getString("name"));
