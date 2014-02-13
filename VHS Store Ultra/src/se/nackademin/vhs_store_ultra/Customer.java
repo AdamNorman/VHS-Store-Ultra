@@ -65,13 +65,13 @@ public class Customer extends JFrame {
 	                    }	                    
 	            ResultSet rs = queryCaller.executeQuery("Select * From sort_titles_genre");  
 	            rs.first();
-	            movieTextArea.append("apapapap");
+//	            movieTextArea.append("apapapap");
 
 	                        for(int i = 0; i < 30; i++)
 	            {               
 	                        	movieTextArea.append(rs.getString("genre")+ "			" + (rs.getString("title")));
 	                        	movieTextArea.append(System.lineSeparator());
-//	                        	movieTextArea.append("apapapapapaa");
+
 
 	                                rs.next();
 	                                
