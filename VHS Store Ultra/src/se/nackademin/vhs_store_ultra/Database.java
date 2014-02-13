@@ -59,8 +59,7 @@ public class Database {
           {                      
                               movieTextArea.append(rs.getString("genre")+ "			" + (rs.getString("title")));
                               movieTextArea.append(System.lineSeparator());
-                              rs.next();
-                              return 
+                              rs.next();                         
                               
           }
                       
