@@ -75,5 +75,31 @@ public class Database {
 		}
 
 	}
+	
+	public void cleanUp(){
+		//Close the connection
+		if(con != null){
+			try {
+				con.close();
+			} catch (SQLException e) {
+				System.err.println("Close connection failed! " + e.getMessage());
+			}
+		}
+		
+		input.close();
+	}
+	
+	public void setupDatabase(){
+		//Create a statement object for sending queries
+		try {
+			queryCaller = con.createStatement();
+		} catch (SQLException e) {
+			System.err.println("Create statement failed. " + e.getMessage());
+			System.exit(1);
+		}
+				
+		
+	}
+	
 
 }
