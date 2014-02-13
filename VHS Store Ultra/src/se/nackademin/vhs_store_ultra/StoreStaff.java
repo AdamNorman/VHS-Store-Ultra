@@ -14,10 +14,6 @@ public class StoreStaff extends JFrame {
 
 
 
-	public static void main(String[] args) {
-		new StoreStaff();
-
-	}
 	
 	JTextArea movieTextArea = new JTextArea();
 	JButton moviesButton = new JButton("Delete customer");
@@ -73,9 +69,9 @@ public class StoreStaff extends JFrame {
 		btnLogOut.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				UserGUI regFace = new UserGUI();
-
+				UserGUI uGui = new UserGUI();
 				dispose();
+				uGui.initialize();
 			}
 		});
 		btnLogOut.setBounds(10, 266, 134, 23);

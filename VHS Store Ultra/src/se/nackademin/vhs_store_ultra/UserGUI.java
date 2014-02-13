@@ -42,34 +42,20 @@ public class UserGUI {
 
 	File documentFile;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					UserGUI window = new UserGUI();
-					// window.User_frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+
+
 
 	/** Create the application. */
 	public UserGUI() {
 		Music audio4life = new Music ();
 		Thread musicThread = new Thread(audio4life);
 		musicThread.start();
-		initialize();
 	}
 	
 	
 
 	/** Initialize the contents of the frame. */
-	void initialize() {
+	public void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 495, 335);
 		frame.setLocationRelativeTo(null);
@@ -170,11 +156,11 @@ public class UserGUI {
 				String puname = userTxtField.getText();
 				String ppaswd = passField.getText();
 				if (puname.equals("123") && ppaswd.equals("123")) {
-					Customer regFace = new Customer();
+					Customer cust = new Customer();
 					frame.dispose();
+					
 				} else if (puname.equals("456") && ppaswd.equals("456")) {
-					StoreStaff regFace = new StoreStaff();
-					regFace.setVisible(true);
+					StoreStaff sStaff = new StoreStaff();
 					frame.dispose();
 
 				} else {
@@ -187,29 +173,29 @@ public class UserGUI {
 		});
 		frame.setVisible(true);
 	}
-	
-	private void playMusic() {
-		try {
-			File f = new File("Audio/EscapeFromNewYork.wav");
-			AudioInputStream audio = AudioSystem.getAudioInputStream(f);
-			AudioFormat format;
-			format = audio.getFormat();
-			SourceDataLine auline;
-			DataLine.Info info = new DataLine.Info(SourceDataLine.class, format);
-			auline = (SourceDataLine) AudioSystem.getLine(info);
-			auline.open(format);
-			auline.start();
-			int nBytesRead = 0;
-			byte[] abData = new byte[524288];
-			while (nBytesRead != -1) {
-				nBytesRead = audio.read(abData, 0, abData.length);
-				if (nBytesRead >= 0) {
-					auline.write(abData, 0, nBytesRead);
-				}
-			}
-		} catch (Exception E) {
-			System.out.println(E.getMessage());
-		}
-	}
+//	
+//	private void playMusic() {
+//		try {
+//			File f = new File("Audio/EscapeFromNewYork.wav");
+//			AudioInputStream audio = AudioSystem.getAudioInputStream(f);
+//			AudioFormat format;
+//			format = audio.getFormat();
+//			SourceDataLine auline;
+//			DataLine.Info info = new DataLine.Info(SourceDataLine.class, format);
+//			auline = (SourceDataLine) AudioSystem.getLine(info);
+//			auline.open(format);
+//			auline.start();
+//			int nBytesRead = 0;
+//			byte[] abData = new byte[524288];
+//			while (nBytesRead != -1) {
+//				nBytesRead = audio.read(abData, 0, abData.length);
+//				if (nBytesRead >= 0) {
+//					auline.write(abData, 0, nBytesRead);
+//				}
+//			}
+//		} catch (Exception E) {
+//			System.out.println(E.getMessage());
+//		}
+//	}
 
 }

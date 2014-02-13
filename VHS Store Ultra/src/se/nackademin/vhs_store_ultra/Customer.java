@@ -48,9 +48,6 @@ public class Customer extends JFrame {
 		setLocation(500, 280);
 		getContentPane().setLayout(null);
 		
-		
-		
-
 		moviesButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
