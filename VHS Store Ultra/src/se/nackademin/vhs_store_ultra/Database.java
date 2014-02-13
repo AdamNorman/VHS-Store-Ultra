@@ -11,11 +11,13 @@ public class Database {
 		ds.setServerName("localhost");
 		ds.setPort(3306);
 		ds.setDatabaseName("vhs_store_ultra");
+		String user = "root";
+        String password = "";
 		
 		Connection con = null;
 		try {
 			//DO NOT SHOW PASSWORD IN YOUR CODE IN YOUR REAL APPLICATION
-			con = ds.getConnection("root", "");
+			con = ds.getConnection(user, password);
 		} catch (SQLException e) {
 			System.err.println("Error: Couldn't connect. " + e.getMessage());
 			return;
@@ -42,17 +44,14 @@ public class Database {
 
 		
 		ResultSet results = null;
+		
 				
 		try {
 			//INSERT
 //			int affectedRows = queryCaller.executeUpdate("INSERT INTO person VALUES('800312', 'Lionel', '08112233')");
 //			System.out.println("Affected rows: " + affectedRows);
 			
-			//SELECT
-			
-			//String selectStuff = "SELECT * FROM sort_titles_genre";
-			
-            //results = queryCaller.executeQuery(selectStuff);
+
 
 			
 			results = queryCaller.executeQuery("SELECT * FROM sort_titles_genre");
@@ -62,13 +61,18 @@ public class Database {
 			
 			
 //			System.out.println(results);
-			//System.out.print(results.getString("title") + results.getString("genre"));
 			
 			while(results.next()){
-				System.out.println(results.getString("title") + "				" + results.getString("genre"));
+				System.out.println(results.getString("title") + " " + results.getString("genre"));
+				
 			}
 		} catch (SQLException e) {
 			System.err.println("SQL query failed! " + e.getMessage());
+		}
+		
+		for (int i = 0; i < 30; i++) {
+//			String string = args[i];
+			
 		}
 		
 		
@@ -88,7 +92,9 @@ public class Database {
 				} catch (SQLException e) {
 					System.err.println("Close statement failed! " + e.getMessage());
 				}
-			}	
+			}
+			
+		}
 			
 			/*
 
@@ -222,6 +228,9 @@ public class Database {
 		}
 		
 		*/
-	}
+	
+
+		
+	
 	
 }

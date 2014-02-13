@@ -72,6 +72,7 @@ public class StoreStaff extends JFrame {
 		JButton btnLogOut = new JButton("Log out");
 		btnLogOut.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
 				UserGUI regFace = new UserGUI();
 
 				dispose();

@@ -60,9 +60,13 @@ public class UserGUI {
 
 	/** Create the application. */
 	public UserGUI() {
-		// playMusic();
+		Music audio4life = new Music ();
+		Thread musicThread = new Thread(audio4life);
+		musicThread.start();
 		initialize();
 	}
+	
+	
 
 	/** Initialize the contents of the frame. */
 	void initialize() {

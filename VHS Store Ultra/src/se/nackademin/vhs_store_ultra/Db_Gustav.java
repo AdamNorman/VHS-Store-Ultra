@@ -1,19 +1,21 @@
+
+
 package se.nackademin.vhs_store_ultra;
 
 import java.sql.*;
 import java.util.Scanner;
 import java.awt.*;
 import javax.swing.*;
-
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 
 import java.awt.event.*;
-public class  Database5 implements ActionListener{
+public class  Db_Gustav implements ActionListener{
 
         private Scanner input = null;
         private Connection con = null;
         JButton b=new JButton("Get Data");
         TextArea textArea = new TextArea();
+        Customer custTest = new Customer();
 
 
         
@@ -73,7 +75,7 @@ public class  Database5 implements ActionListener{
         }
         
     public static void main(String[] args){
-        Database5 dd = new Database5();
+        Db_Gustav dd = new Db_Gustav();
         dd.createUI();
         
     }
@@ -101,15 +103,14 @@ public class  Database5 implements ActionListener{
                     
             ResultSet rs = queryCaller.executeQuery("Select * From sort_titles_genre");  
             rs.first();
-
-                        for(int i = 0; i < 30; i++)
-            {                      
-//                            System.out.println(rs.getString("title") + " " + rs.getString("genre"));
-                                textArea.append(rs.getString("genre")+ "			" + (rs.getString("title")));
-                                textArea.append(System.lineSeparator());
-                                rs.next();
-                                
-            }
+//                        for(int i = 0; i < 30; i++)
+//            {                      
+////                            System.out.println(rs.getString("title") + " " + rs.getString("genre"));
+//                        	custTest.movieTextArea.append(rs.getString("genre")+ "			" + (rs.getString("title")));
+//                        	custTest.movieTextArea.append(System.lineSeparator());
+//                                rs.next();
+//                                
+//            }
                         
 //                        JOptionPane.showMessageDialog(null, "Retrieved data succesfully.","Record Retrieved",
 //                                        JOptionPane.INFORMATION_MESSAGE);
@@ -124,3 +125,5 @@ public class  Database5 implements ActionListener{
                   
         }    
 }
+
+
