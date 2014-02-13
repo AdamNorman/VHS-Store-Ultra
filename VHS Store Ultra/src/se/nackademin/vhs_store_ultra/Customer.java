@@ -51,41 +51,16 @@ public class Customer extends JFrame {
 		moviesButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				 try
-	                {	                    
-	                    Statement queryCaller = null;	                    
-	                    try {
-	                        queryCaller = conn.createStatement();
-	                    } catch (SQLException ex) {
-	                        System.err.println("Create statement failed. " + ex.getMessage());
-	                        System.exit(1);
-	                    }	                    
-	            ResultSet rs = queryCaller.executeQuery("Select * From sort_titles_genre");  
-	            rs.first();
-//	            movieTextArea.append("apapapap");
-
-	                        for(int i = 0; i < 30; i++)
-	            {               
-	                        	movieTextArea.append(rs.getString("genre")+ "			" + (rs.getString("title")));
-	                        	movieTextArea.append(System.lineSeparator());
-
-
-	                                rs.next();
-	                                
-	            }
-	                        
-	                        JOptionPane.showMessageDialog(null, "Retrieved data succesfully.","Record Retrieved",
-	                                        JOptionPane.INFORMATION_MESSAGE);
-	                }
-	                catch(Exception ex){
-	                        JOptionPane.showMessageDialog(null, ex.getMessage(),"Error",
-	                                        JOptionPane.ERROR_MESSAGE);
-	                }     
-	                
-//	            }
-	                  
-	        
-           
+				
+				movieTextArea.append(Movies.getAllMovies());
+				
+				
+				
+//				
+//				movieTextArea.append(rs.getString("genre")+ "			" + (rs.getString("title")));
+//	                        	movieTextArea.append(System.lineSeparator());
+//
+//
 
 				
 			}});
