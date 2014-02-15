@@ -12,6 +12,7 @@ public class Database {
 	private Scanner input = null;
 	private Connection con = null;
 	Statement queryCaller = null;
+	String movieData;
 
 	public void init() {
 
@@ -39,67 +40,51 @@ public class Database {
 
 	}
 
-	public String getAllMovies(String s) {
+	public String getAllMovies() {
 
 		try {
 
-			try {
-				queryCaller = con.createStatement();
-			} catch (SQLException e) {
-				System.err
-						.println("Create statement failed. " + e.getMessage());
-				System.exit(1);
-			}
+			setupDatabase();
 
-			ResultSet rs = queryCaller
-					.executeQuery("Select * From sort_titles_genre");
+			ResultSet rs = queryCaller.executeQuery("Select * From sort_titles_genre");
 			rs.first();
 
-			String movieData = null;
-
-			
 			while (rs.next()) {
-				
-				movieData += rs.getString("genre");
 
-				System.out.println(rs.getString("genre") + "\t\t\t"
-						+ (rs.getString("title")));
-				rs.next();
+				movieData += rs.getString("genre") + "\t"
+						+ (rs.getString("title") + System.lineSeparator());
 
 			}
-			
-			return movieData;
-			
+
 		} catch (SQLException ex) {
 			System.err.println("SQL Query failed" + ex.getMessage());
 		}
+		return movieData;
 
 	}
-	
-	public void cleanUp(){
-		//Close the connection
-		if(con != null){
+
+	public void cleanUp() {
+		// Close the connection
+		if (con != null) {
 			try {
 				con.close();
 			} catch (SQLException e) {
 				System.err.println("Close connection failed! " + e.getMessage());
 			}
 		}
-		
+
 		input.close();
 	}
-	
-	public void setupDatabase(){
-		//Create a statement object for sending queries
+
+	public void setupDatabase() {
+		// Create a statement object for sending queries
 		try {
 			queryCaller = con.createStatement();
 		} catch (SQLException e) {
 			System.err.println("Create statement failed. " + e.getMessage());
 			System.exit(1);
 		}
-				
-		
+
 	}
-	
 
 }
