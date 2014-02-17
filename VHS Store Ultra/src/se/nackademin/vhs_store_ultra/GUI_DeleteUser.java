@@ -27,14 +27,14 @@ public class GUI_DeleteUser extends JFrame implements ActionListener {
         setSize(444, 247);
         getContentPane().setLayout(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setTitle("Modify Customer | VHS Store Ultra");
+        setTitle("Delete Customer | VHS Store Ultra");
         
 		setLocationRelativeTo(null);
 		
 //		this.dispose();
 
 
-        l1 = new JLabel("Modify Customer with your Might!");
+        l1 = new JLabel("Delete Customer with your Might!");
         l1.setHorizontalAlignment(SwingConstants.CENTER);
         l1.setForeground(Color.blue);
         l1.setFont(new Font("Serif", Font.BOLD, 20));

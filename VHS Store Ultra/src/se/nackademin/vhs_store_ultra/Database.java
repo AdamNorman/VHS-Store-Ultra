@@ -100,6 +100,23 @@ public class Database {
 		return movieData;
 	}
 	
+    public String listAllCust() {
+        movieData = "";
+        ResultSet rs = null;
+        try {
+            setupDatabase();
+            rs = queryCaller.executeQuery("SELECT * FROM Customer");
+            rs.first();
+            do {
+                movieData += rs.getString("personid") + "\t" + (rs.getString("name") 
+                        + "\t" + rs.getString("phonenumber") + System.lineSeparator());
+            } while (rs.next());
+        } catch (SQLException ex) {
+            System.err.println("SQL Query failed" + ex.getMessage());
+        }
+        return movieData;
+    }
+	
 
     public String deleteCust(String str) {
         ResultSet rs = null;
@@ -137,8 +154,8 @@ public class Database {
             setupDatabase();
             rs.first();
             do {
-                movieData += "TITLE:" + System.lineSeparator() + rs.getString("title") + System.lineSeparator() + System.lineSeparator() 
-                        + "REVIEW:" + System.lineSeparator() + rs.getString("review") + System.lineSeparator() + System.lineSeparator();
+                movieData += "Title:" + System.lineSeparator() + rs.getString("title") + System.lineSeparator() + System.lineSeparator() 
+                        + "Review:" + System.lineSeparator() + rs.getString("review") + System.lineSeparator() + System.lineSeparator();
             } while (rs.next());
         } catch (SQLException ex) {
             System.err.println("SQL Query failed! " + ex.getMessage());

@@ -100,6 +100,12 @@ public class GUI_StoreStaff extends JFrame {
 		getContentPane().add(movieScrollArea);
 		
 		JButton viewCustButton = new JButton("View");
+		viewCustButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				db1.listAllCust();
+				movieScrollArea.setText(db1.movieData.toString());
+			}
+		});
 		viewCustButton.setBounds(105, 55, 93, 23);
 		getContentPane().add(viewCustButton);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

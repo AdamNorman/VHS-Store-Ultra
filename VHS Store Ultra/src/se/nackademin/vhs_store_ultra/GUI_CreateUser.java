@@ -36,12 +36,21 @@ public class GUI_CreateUser extends JFrame implements ActionListener {
         l1.setFont(new Font("Serif", Font.BOLD, 20));
 
         lName = new JLabel("Name:");
-        lPerson_id = new JLabel("Person ID:");
+        lPerson_id = new JLabel("Person ID (10 digits):");
         lPostal = new JLabel("Postal Code:");
         lCity = new JLabel("City:");
         lPhone = new JLabel("Phone No:");
         tfName = new JTextField();
         tfPerson_id = new JTextField();
+        tfPerson_id.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		if (rootPaneCheckingEnabled) {
+					//yadda yadda
+				}
+        		
+        		JOptionPane.showMessageDialog(null, "Cannot exceed 10 digits.");
+        	}
+        });
         tfPostal = new JTextField();
         tfCity = new JTextField();
         tfPhone = new JTextField();
@@ -124,6 +133,7 @@ public class GUI_CreateUser extends JFrame implements ActionListener {
                 x++;
             } catch (Exception ex) {
                 System.err.println("SQL Query failed " + ex.getMessage());
+                JOptionPane.showMessageDialog(null, "Cannot exceed 10 digits");
             }
             if (x > 0) {
                 JOptionPane.showMessageDialog(btn1, "Data Saved Successfully");

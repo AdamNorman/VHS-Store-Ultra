@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.util.Scanner;
 import java.awt.TextArea;
+import java.awt.ScrollPane;
 
 public class GUI_Customer extends JFrame {
 	
@@ -12,7 +13,7 @@ public class GUI_Customer extends JFrame {
 	Database db1 = new Database();
 	String infoOnComponent = "";
 	private JTextField txtSearchMovie;
-	TextArea movieScrollArea = new TextArea();
+	TextArea movieScrollArea = new TextArea("", 4, 30, TextArea.SCROLLBARS_VERTICAL_ONLY);
 
 	
 	public GUI_Customer() {
@@ -75,6 +76,8 @@ public class GUI_Customer extends JFrame {
 		});
 		btnLogOut.setBounds(10, 266, 134, 23);
 		getContentPane().add(btnLogOut);
+		movieScrollArea.setEditable(false);
+
 		
 		movieScrollArea.setBounds(202, 12, 380, 277);
 		getContentPane().add(movieScrollArea);
@@ -82,5 +85,4 @@ public class GUI_Customer extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 	}
-	
 }
