@@ -26,7 +26,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class UserGUI {
+public class UserGUI15 {
 
 	private JFrame frame;
 	private JLabel vhsLabel;
@@ -45,8 +45,9 @@ public class UserGUI {
 
 
 
-	/** Create the application. */
-	public UserGUI() {
+	/** Create the application. 
+	 * @wbp.parser.entryPoint*/
+	public UserGUI15() {
 		Music audio4life = new Music ();
 		Thread musicThread = new Thread(audio4life);
 		musicThread.start();
@@ -54,7 +55,8 @@ public class UserGUI {
 	
 	
 
-	/** Initialize the contents of the frame. */
+	/** Initialize the contents of the frame. 
+	 * @wbp.parser.entryPoint*/
 	public void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 495, 335);
@@ -156,11 +158,11 @@ public class UserGUI {
 				String puname = userTxtField.getText();
 				String ppaswd = passField.getText();
 				if (puname.equals("123") && ppaswd.equals("123")) {
-					Customer cust = new Customer();
+					new GUI_Customer();
 					frame.dispose();
 					
 				} else if (puname.equals("456") && ppaswd.equals("456")) {
-					StoreStaff sStaff = new StoreStaff();
+					GUI_StoreStaff sStaff = new GUI_StoreStaff();
 					frame.dispose();
 
 				} else {

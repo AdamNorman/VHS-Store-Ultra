@@ -5,18 +5,14 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-        UserGUI ug = new UserGUI();
+		GUI_User ug = new GUI_User();
         ug.initialize();
         
         Database db = new Database();
         db.init();
-
-//        StoreStaff ss = new StoreStaff();
-//        
-//        Customer ct = new Customer();
-//        
         
-
+        Music2 ms = new Music2();
+        ms.playMusic();
 
 	}
 
