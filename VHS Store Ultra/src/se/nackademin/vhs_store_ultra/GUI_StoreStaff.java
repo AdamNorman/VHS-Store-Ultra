@@ -13,6 +13,7 @@ public class GUI_StoreStaff extends JFrame {
 	private static final long serialVersionUID = 1L;
 	Database db1 = new Database();
 	TextArea movieScrollArea = new TextArea();
+	
 
 
 
@@ -27,7 +28,7 @@ public class GUI_StoreStaff extends JFrame {
 		setLocationRelativeTo(null);
 
 		
-		db1.init();
+		db1.staffInit(null);
 		
 
         //////////////////////Action when "delete Button" button is pressed (delete Users)
@@ -88,6 +89,7 @@ public class GUI_StoreStaff extends JFrame {
 		btnLogOut.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
+				db1.cleanUp();
 				GUI_User ug1 = new GUI_User();
 				dispose();
 				ug1.initialize();

@@ -11,28 +11,71 @@ public class Database {
 	private Connection con = null;
 	Statement queryCaller = null;
 	String movieData;
+	PropHandling ph = new PropHandling();
 	
 	
-	// Setup the connection properties
-	public void init() {
-		MysqlDataSource ds = new MysqlDataSource();
-		ds.setServerName("localhost");
-		ds.setPort(3306);
-		ds.setDatabaseName("vhs_store_ultra");
-		String user = "root";
-		ds.setUser(user);
-		String pw = "";
-		ds.setPassword(pw);
-		// Connect to the database
-		try {
-			con = ds.getConnection();
-		} catch (SQLException e) {
-			System.err.println("Connection failed! " + e.getMessage());
-			System.exit(1);
+	// Behövs ej
+//	// Setup the connection properties
+//	public void init() {
+//		MysqlDataSource ds = new MysqlDataSource();
+//		ds.setServerName("localhost");
+//		ds.setPort(3306);
+//		ds.setDatabaseName("vhs_store_ultra");
+//		String user = "root";
+//		ds.setUser(user);
+//		String pw = "";
+//		ds.setPassword(pw);
+//		// Connect to the database
+//		try {
+//			con = ds.getConnection();
+//		} catch (SQLException e) {
+//			System.err.println("Connection failed! " + e.getMessage());
+//			System.exit(1);
+//		}
+//		System.out.println("Connection successful.");
+//	}
+	
+	// Setup the connection properties for Customer
+		public void custInit(String custPass) {
+			ph.readProperties("config_properties.txt");
+			MysqlDataSource ds = new MysqlDataSource();
+			ds.setServerName("localhost");
+			ds.setPort(3306);
+			ds.setDatabaseName("vhs_store_ultra");
+			String user = "customer_user";
+			ds.setUser(user);
+			String pw = ph.getProperty("custPass");
+			ds.setPassword(pw);
+			// Connect to the database
+			try {
+				con = ds.getConnection();
+			} catch (SQLException e) {
+				System.err.println("Connection failed! " + e.getMessage());
+				System.exit(1);
+			}
+			System.out.println("Customer is connected.");
 		}
-		System.out.println("Connection successful.");
-	}
 	
+		// Setup the connection properties for Store Staff
+		public void staffInit(String staffPass) {
+			ph.readProperties("config_properties.txt");
+			MysqlDataSource ds = new MysqlDataSource();
+			ds.setServerName("localhost");
+			ds.setPort(3306);
+			ds.setDatabaseName("vhs_store_ultra");
+			String user = "staff_user";
+			ds.setUser(user);
+			String pw = ph.getProperty("staffPass");
+			ds.setPassword(pw);
+			// Connect to the database
+			try {
+				con = ds.getConnection();
+			} catch (SQLException e) {
+				System.err.println("Connection failed! " + e.getMessage());
+				System.exit(1);
+			}
+			System.out.println("Staff is connected.");
+		}
 	
 	public void setupDatabase() {
 		// Create a statement object for sending queries
@@ -174,6 +217,7 @@ public class Database {
 				System.err.println("Close connection failed! " + e.getMessage());
 			}
 		}
+		System.out.println("Connection to Database is successfully closed.");
 	}
 
 }

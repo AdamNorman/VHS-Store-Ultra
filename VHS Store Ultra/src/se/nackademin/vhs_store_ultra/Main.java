@@ -8,9 +8,6 @@ public class Main {
 		GUI_User ug = new GUI_User();
         ug.initialize();
         
-        Database db = new Database();
-        db.init();
-        
         Music2 ms = new Music2();
         ms.playMusic();
 

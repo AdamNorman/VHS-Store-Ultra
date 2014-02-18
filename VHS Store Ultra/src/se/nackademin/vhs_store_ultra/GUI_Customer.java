@@ -14,6 +14,8 @@ public class GUI_Customer extends JFrame {
 	String infoOnComponent = "";
 	private JTextField txtSearchMovie;
 	TextArea movieScrollArea = new TextArea("", 4, 30, TextArea.SCROLLBARS_VERTICAL_ONLY);
+	
+	
 
 	
 	public GUI_Customer() {
@@ -26,7 +28,7 @@ public class GUI_Customer extends JFrame {
 		setLocationRelativeTo(null);
 
 		
-		db1.init();
+		db1.custInit(null);
 		
 		//Action when "Show movies" button is pressed
 		JButton moviesButton = new JButton("Show movies");
@@ -69,8 +71,11 @@ public class GUI_Customer extends JFrame {
 		JButton btnLogOut = new JButton("Log out");
 		btnLogOut.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				dispose();
+				
+				db1.cleanUp();
+				
 				GUI_User ug1 = new GUI_User();
+				dispose();
 				ug1.initialize();
 			}
 		});
