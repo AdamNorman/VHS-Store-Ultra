@@ -1,7 +1,6 @@
 package se.nackademin.vhs_store_ultra;
 
 import java.io.File;
-
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -9,8 +8,8 @@ import javax.sound.sampled.DataLine;
 import javax.sound.sampled.SourceDataLine;
 
 public class Music {
-
-
+	
+	//Metod som spelar upp en ljudfil
 	public void playMusic() {
 		try {
 			File f = new File("Audio/EscapeFromNewYork.wav");

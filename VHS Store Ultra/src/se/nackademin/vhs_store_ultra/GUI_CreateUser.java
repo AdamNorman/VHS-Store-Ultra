@@ -8,33 +8,25 @@ import javax.swing.*;
 
 public class GUI_CreateUser extends JFrame implements ActionListener {
 	
-    /**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	JLabel l1, lPerson_id, lName, lPostal, lCity, lPhone;
     JTextField tfName, tfPerson_id, tfPostal, tfCity, tfPhone;
     JButton btn1, btn2;
     private Connection con = null;
     private JButton btnExit;
-
-    GUI_CreateUser() {
-
+    
+    public GUI_CreateUser() {
         setResizable(false);
         setSize(575, 375);
         getContentPane().setLayout(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setTitle("Registration Form | VHS Store Ultra");
-        
 		setLocationRelativeTo(null);
 		
-//		this.dispose();
-
-
         l1 = new JLabel("Registration Form for VHS Store Ultra:");
         l1.setForeground(Color.blue);
         l1.setFont(new Font("Serif", Font.BOLD, 20));
-
+        
         lName = new JLabel("Name:");
         lPerson_id = new JLabel("Person ID (10 digits):");
         lPostal = new JLabel("Postal Code:");
@@ -48,7 +40,7 @@ public class GUI_CreateUser extends JFrame implements ActionListener {
 					//yadda yadda
 				}
         		
-        		JOptionPane.showMessageDialog(null, "Cannot exceed 10 digits.");
+        		JOptionPane.showMessageDialog(null, "Person ID cannot exceed 10 digits!");
         	}
         });
         tfPostal = new JTextField();
@@ -112,33 +104,22 @@ public class GUI_CreateUser extends JFrame implements ActionListener {
             String s5 = tfPhone.getText();
 
             try {
-//                Database db2 = new Database();
-//                db2.init();
-//                db2.setupDatabase();
                 Class.forName("com.mysql.jdbc.Driver");
                 con = DriverManager.getConnection("jdbc:mysql://localhost/vhs_store_ultra","root","");
-
-
                 PreparedStatement ps = con.prepareStatement("Insert into customer(`name`,`personid`, `postal_code`, `city`, `phonenumber`) values(?,?,?,?,?)");
-
                 ps.setString(1, s1);
                 ps.setString(2, s2);
                 ps.setString(3, s3);
                 ps.setString(4, s4);
                 ps.setString(5, s5);
-                
                 ps.executeUpdate();
-                // db2.queryCaller.executeQuery("Insert into customer values(?,?,?,?,?,?)");
-
                 x++;
             } catch (Exception ex) {
                 System.err.println("SQL Query failed " + ex.getMessage());
-                JOptionPane.showMessageDialog(null, "Cannot exceed 10 digits");
             }
             if (x > 0) {
                 JOptionPane.showMessageDialog(btn1, "Data Saved Successfully");
             }
-
         } else {
             tfName.setText("");
             tfPerson_id.setText("");
@@ -149,4 +130,3 @@ public class GUI_CreateUser extends JFrame implements ActionListener {
     }
 
 }
-

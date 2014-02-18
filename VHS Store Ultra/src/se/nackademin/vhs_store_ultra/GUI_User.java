@@ -15,35 +15,24 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
 public class GUI_User {
-
+	
 	private JFrame frame;
 	private JTextField userTxtField;
 	private JPasswordField passField;
 	private JTextField mailTxtField;
 	private JButton logButton;
-
+	
 	File documentFile;
 	
 	PropHandling ph = new PropHandling();
-
-
-
-
-//	/** Create the application. */
-//	public UserGUI() {
-//		Music audio4life = new Music ();
-//		Thread musicThread = new Thread(audio4life);
-//		musicThread.start();
-//	}
 	
-	
-
-	/** Initialize the contents of the frame. */
+	// Initialize the contents of the frame
 	public void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 495, 335);
@@ -89,7 +78,6 @@ public class GUI_User {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				mailTxtField.setText("");
-
 			}
 		});
 		mailTxtField.setText("skriv in din mail");
@@ -110,32 +98,36 @@ public class GUI_User {
 
 		lblNewLabel.setSize(326, 179);
 		frame.getContentPane().add(lblNewLabel);
-
-		JButton ansökButton = new JButton("Ansök");
-		ansökButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-								
-				FileWriter pw;
-				try {
-					documentFile = new File("mail_list.txt");
-					pw = new FileWriter("mail_list.txt", true);
-					mailTxtField.write(pw);
+		
+		   JButton ansökButton = new JButton("Ansök");
+			ansökButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
 					
-//	            	pw.write(System.getProperty("line.separator"));
-//
-//					do {
-//		            	pw.write(System.getProperty("line.separator"));
-//					} while (pw != null);
-//					
-//		            for (int num = 1; num < 11; num++) {
-//		            	pw.write("rad: " + pw + System.getProperty("line.separator"));
-////		                writer.write("This is line " + num + System.getProperty( "line.separator" ));
-//		            }
-//					pw.append(System.lineSeparator());
-
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
+					BufferedWriter bufferedWriter = null;
+					   
+					  try {
+					 
+					   
+					   //to append more data to the existing file change the line to
+					   //FileWriter pw = new FileWriter("mail_list.txt",true);
+					   FileWriter pw = new FileWriter("mail_list.txt", true);
+					  
+					         documentFile = new File("mail_list.txt");
+					         bufferedWriter = new BufferedWriter(pw);
+					         mailTxtField.write(pw);
+					         bufferedWriter.newLine();
+					     
+					  } catch (IOException e3) {
+					   e3.printStackTrace();
+					  } finally {
+					   try {
+					    if (bufferedWriter != null){
+					     bufferedWriter.close();
+					    }
+					   } catch (IOException ex) {
+					    ex.printStackTrace();
+					   }
+					  }
 			}
 		});
 		ansökButton.setBounds(125, 262, 89, 23);
@@ -166,4 +158,5 @@ public class GUI_User {
 		});
 		frame.setVisible(true);
 	}
+	
 }

@@ -3,22 +3,16 @@ package se.nackademin.vhs_store_ultra;
 import javax.swing.*;
 
 import java.awt.event.*;
-import java.util.Scanner;
 import java.awt.TextArea;
-import java.awt.ScrollPane;
 import java.awt.Color;
 
 public class GUI_Customer extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
-	
 	Database db1 = new Database();
 	String infoOnComponent = "";
 	private JTextField txtSearchMovie;
 	TextArea movieScrollArea = new TextArea("", 4, 30, TextArea.SCROLLBARS_VERTICAL_ONLY);
-	
-	
-
 	
 	public GUI_Customer() {
 		super("Customer");
@@ -26,13 +20,12 @@ public class GUI_Customer extends JFrame {
 		setSize(600, 339);
 		setLocation(500, 280);
 		getContentPane().setLayout(null);
-		
 		setLocationRelativeTo(null);
-
 		
 		db1.custInit(null);
 		
-		//Action when "Show movies" button is pressed
+		
+		// Action when "Show movies" button is pressed
 		JButton moviesButton = new JButton("Show movies");
 		moviesButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -64,27 +57,19 @@ public class GUI_Customer extends JFrame {
 		btnSearch.setBounds(119, 59, 73, 23);
 		getContentPane().add(btnSearch);
 		
-		
 		JButton btnRent = new JButton("Rent");
 		btnRent.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
         		JOptionPane.showMessageDialog(null, "The movie of your dreams has been rented!");
-
 			}
 		});
 		btnRent.setBounds(10, 107, 134, 23);
 		getContentPane().add(btnRent);
 		
-		
-		
-		
 		JButton btnLogOut = new JButton("Log out");
 		btnLogOut.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
 				db1.cleanUp();
-				
 				GUI_User ug1 = new GUI_User();
 				dispose();
 				ug1.initialize();
@@ -94,7 +79,6 @@ public class GUI_Customer extends JFrame {
 		getContentPane().add(btnLogOut);
 		movieScrollArea.setBackground(Color.WHITE);
 		movieScrollArea.setEditable(false);
-
 		
 		movieScrollArea.setBounds(202, 12, 380, 277);
 		getContentPane().add(movieScrollArea);
@@ -102,4 +86,5 @@ public class GUI_Customer extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 	}
+	
 }
