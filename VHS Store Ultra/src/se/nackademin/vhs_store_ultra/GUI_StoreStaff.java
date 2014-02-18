@@ -11,7 +11,7 @@ public class GUI_StoreStaff extends JFrame {
 	TextArea movieScrollArea = new TextArea();
 	
 	// Konstruktorn skapar det nya GUI:t för en StoreStaff
-	public GUI_StoreStaff() {
+	public GUI_StoreStaff(String magicPass) {
 		super("Store Staff");
 		setResizable(false);
 		setSize(600, 339);
@@ -19,7 +19,7 @@ public class GUI_StoreStaff extends JFrame {
 		getContentPane().setLayout(null);
 		setLocationRelativeTo(null);
 		
-		db1.staffInit(null);
+		db1.staffInit(magicPass);
 		
 		
         // Action when "deleteButton" button is pressed (delete Users)

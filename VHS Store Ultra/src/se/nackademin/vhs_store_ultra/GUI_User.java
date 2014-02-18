@@ -143,7 +143,7 @@ public class GUI_User {
 					
 				} else if (puname.equals("456") && ppaswd.equals(ph.getProperty("staffPass"))) {
 					String magicPass = JOptionPane.showInputDialog("Please enter Admin-password");
-					new GUI_StoreStaff();
+					new GUI_StoreStaff(magicPass);
 					frame.dispose();
 
 				} else {

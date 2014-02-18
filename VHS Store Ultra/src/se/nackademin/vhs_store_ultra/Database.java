@@ -33,7 +33,7 @@ public class Database {
 	}
 
 	// Setup the connection properties for Store Staff
-	public void staffInit(String staffPass) {
+	public void staffInit(String magicPass) {
 		ph.readProperties("config_properties.txt");
 		MysqlDataSource ds = new MysqlDataSource();
 		ds.setServerName("localhost");
@@ -41,8 +41,8 @@ public class Database {
 		ds.setDatabaseName("vhs_store_ultra");
 		String user = "staff_user";
 		ds.setUser(user);
-		String pw = ph.getProperty("staffPass");
-		ds.setPassword(pw);
+//		String pw = ph.getProperty("staffPass");
+		ds.setPassword(magicPass);
 		// Connect to the database
 		try {
 			con = ds.getConnection();
