@@ -33,14 +33,16 @@ public class GUI_CreateUser extends JFrame implements ActionListener {
         lCity = new JLabel("City:");
         lPhone = new JLabel("Phone No:");
         tfName = new JTextField();
+        
+        //Påbörjat projekt för att informera Store Staff om att uppgifter saknas
         tfPerson_id = new JTextField();
         tfPerson_id.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		if (rootPaneCheckingEnabled) {
-					//yadda yadda
 				}
+//        		JOptionPane.showMessageDialog(null, "Person ID cannot exceed 10 digits!");
+
         		
-        		JOptionPane.showMessageDialog(null, "Person ID cannot exceed 10 digits!");
         	}
         });
         tfPostal = new JTextField();

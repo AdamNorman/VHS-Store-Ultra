@@ -107,9 +107,6 @@ public class GUI_User {
 					   
 					  try {
 					 
-					   
-					   //to append more data to the existing file change the line to
-					   //FileWriter pw = new FileWriter("mail_list.txt",true);
 					   FileWriter pw = new FileWriter("mail_list.txt", true);
 					  
 					         documentFile = new File("mail_list.txt");
@@ -145,6 +142,7 @@ public class GUI_User {
 					frame.dispose();
 					
 				} else if (puname.equals("456") && ppaswd.equals(ph.getProperty("staffPass"))) {
+					String magicPass = JOptionPane.showInputDialog("Please enter Admin-password");
 					new GUI_StoreStaff();
 					frame.dispose();
 
