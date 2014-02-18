@@ -8,10 +8,10 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.DataLine;
 import javax.sound.sampled.SourceDataLine;
 
-public class Music implements Runnable {
+public class Music {
 
-	//
-	private void playMusic() {
+
+	public void playMusic() {
 		try {
 			File f = new File("Audio/EscapeFromNewYork.wav");
 			AudioInputStream audio = AudioSystem.getAudioInputStream(f);
@@ -35,9 +35,4 @@ public class Music implements Runnable {
 		}
 	}
 
-	@Override
-	public void run() {
-		// TODO Auto-generated method stub
-		playMusic();
-	}
 }

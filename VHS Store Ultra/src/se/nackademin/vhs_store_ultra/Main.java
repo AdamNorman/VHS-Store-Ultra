@@ -8,7 +8,7 @@ public class Main {
 		GUI_User ug = new GUI_User();
         ug.initialize();
         
-        Music2 ms = new Music2();
+        Music ms = new Music();
         ms.playMusic();
 
 	}
