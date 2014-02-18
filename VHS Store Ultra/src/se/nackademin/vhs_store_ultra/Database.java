@@ -1,8 +1,6 @@
 package se.nackademin.vhs_store_ultra;
 
 import java.sql.*;
-import java.awt.*;
-import javax.swing.*;
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 
 public class Database {
@@ -12,28 +10,6 @@ public class Database {
 	Statement queryCaller = null;
 	String movieData;
 	PropHandling ph = new PropHandling();
-	
-	
-	// Behövs ej
-//	// Setup the connection properties
-//	public void init() {
-//		MysqlDataSource ds = new MysqlDataSource();
-//		ds.setServerName("localhost");
-//		ds.setPort(3306);
-//		ds.setDatabaseName("vhs_store_ultra");
-//		String user = "root";
-//		ds.setUser(user);
-//		String pw = "";
-//		ds.setPassword(pw);
-//		// Connect to the database
-//		try {
-//			con = ds.getConnection();
-//		} catch (SQLException e) {
-//			System.err.println("Connection failed! " + e.getMessage());
-//			System.exit(1);
-//		}
-//		System.out.println("Connection successful.");
-//	}
 	
 	// Setup the connection properties for Customer
 		public void custInit(String custPass) {
@@ -105,6 +81,23 @@ public class Database {
 		return movieData;
 	}
 	
+	//Method to list ALL movies orded by genre...
+	public String inStock() {
+		ResultSet rs = null;
+		movieData = "";
+		try {
+			setupDatabase();
+			rs = queryCaller.executeQuery("SELECT * FROM titles_in_stock");
+			rs.first();
+			while (rs.next()) {
+				movieData += "In stock: " + rs.getString("in_stock") + "\t" + (rs.getString("title") + System.lineSeparator());
+			}
+		} catch (SQLException ex) {
+			System.err.println("SQL Query failed" + ex.getMessage());
+		}
+		return movieData;
+	}
+	
 	//Method to list pending orders from Rental...
     public String getOrders() {
         movieData = "";
@@ -133,7 +126,6 @@ public class Database {
 			setupDatabase();
 			rs = queryCaller.executeQuery("SELECT * FROM Top_ten_movies");
 			rs.first();
-			//TODO: null SKA INTE SKRIVAS UT! utrett
 			do {
 				movieData += rs.getString("Score") + "\t\t" + (rs.getString("Title") + System.lineSeparator());
 			} while (rs.next());
@@ -186,7 +178,7 @@ public class Database {
         try {
             search = con.prepareStatement("SELECT Movie.title, Quality_control.review "
                     + "FROM Movie, Quality_control WHERE Movie.movie_id=Quality_control.movie_id AND Movie.title LIKE ?");
-            search.setString(1, str+"%");
+            search.setString(1, "%"+str+"%");
             search.executeQuery();
             rs = search.getResultSet();
         } catch (SQLException e) {

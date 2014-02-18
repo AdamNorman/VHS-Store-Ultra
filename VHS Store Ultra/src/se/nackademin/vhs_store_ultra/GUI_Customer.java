@@ -1,10 +1,12 @@
 package se.nackademin.vhs_store_ultra;
 
 import javax.swing.*;
+
 import java.awt.event.*;
 import java.util.Scanner;
 import java.awt.TextArea;
 import java.awt.ScrollPane;
+import java.awt.Color;
 
 public class GUI_Customer extends JFrame {
 	
@@ -64,8 +66,17 @@ public class GUI_Customer extends JFrame {
 		
 		
 		JButton btnRent = new JButton("Rent");
+		btnRent.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+        		JOptionPane.showMessageDialog(null, "The movie of your dreams has been rented!");
+
+			}
+		});
 		btnRent.setBounds(10, 107, 134, 23);
 		getContentPane().add(btnRent);
+		
+		
 		
 		
 		JButton btnLogOut = new JButton("Log out");
@@ -81,6 +92,7 @@ public class GUI_Customer extends JFrame {
 		});
 		btnLogOut.setBounds(10, 266, 134, 23);
 		getContentPane().add(btnLogOut);
+		movieScrollArea.setBackground(Color.WHITE);
 		movieScrollArea.setEditable(false);
 
 		

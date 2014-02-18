@@ -52,11 +52,18 @@ public class GUI_DeleteUser extends JFrame implements ActionListener {
         getContentPane().add(lName);
         getContentPane().add(idField);
         
+        //////////////////////Action when "Submit" button is pressed (log out to UserGui)
+        
         submitButton = new JButton("Submit");
         submitButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-            	db.deleteCust(idField.getText());
-        		JOptionPane.showMessageDialog(null, "Customer burns in Hell!");
+//            	db.deleteCust(idField.getText());
+        		try {
+        			JOptionPane.showMessageDialog(null, "Customer burns in Hell!");
+				} catch (Exception e2) {
+					System.err.println("Invalid person ID " + e2.getMessage());				
+				}
+        		
         		
         		
         	}

@@ -14,6 +14,8 @@ public class PropHandling {
 		prop = new Properties();
 		try {
 			//set the properties value
+			prop.setProperty("custName", fileName);
+			prop.setProperty("staffPass", fileName);
 			prop.setProperty("custPass", fileName);
 			prop.setProperty("staffPass", fileName);
 			

@@ -33,7 +33,7 @@ public class GUI_StoreStaff extends JFrame {
 
         //////////////////////Action when "delete Button" button is pressed (delete Users)
 		
-		JButton deleteButton = new JButton("Modify");
+		JButton deleteButton = new JButton("Delete");
 		deleteButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -68,6 +68,14 @@ public class GUI_StoreStaff extends JFrame {
 		getContentPane().add(btnTopMovies);
 		
 		JButton btnInStore = new JButton("In store");
+		btnInStore.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				db1.inStock();
+				movieScrollArea.setText(db1.movieData.toString());
+				
+			}
+		});
 		btnInStore.setBounds(10, 195, 134, 23);
 		getContentPane().add(btnInStore);
 		
@@ -97,6 +105,8 @@ public class GUI_StoreStaff extends JFrame {
 		});
 		btnLogOut.setBounds(10, 266, 134, 23);
 		getContentPane().add(btnLogOut);
+		movieScrollArea.setBackground(Color.WHITE);
+		movieScrollArea.setEditable(false);
 		
 		movieScrollArea.setBounds(204, 12, 380, 277);
 		getContentPane().add(movieScrollArea);

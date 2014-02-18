@@ -1,10 +1,5 @@
 package se.nackademin.vhs_store_ultra;
 
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.DataLine;
-import javax.sound.sampled.SourceDataLine;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -15,9 +10,7 @@ import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
-import java.awt.EventQueue;
 import java.awt.SystemColor;
-import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
@@ -29,18 +22,14 @@ import java.io.IOException;
 public class GUI_User {
 
 	private JFrame frame;
-	private JLabel vhsLabel;
-	private ImageIcon vhsIcon;
 	private JTextField userTxtField;
 	private JPasswordField passField;
 	private JTextField mailTxtField;
-	private JTextArea userTxtArea;
-	private JTextArea passTxtArea;
-	private JTextArea regTxtArea;
-	private JButton signUpBtn;
 	private JButton logButton;
 
 	File documentFile;
+	
+	PropHandling ph = new PropHandling();
 
 
 
@@ -125,20 +114,25 @@ public class GUI_User {
 		JButton ansökButton = new JButton("Ansök");
 		ansökButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				System.lineSeparator();
-				
+								
 				FileWriter pw;
 				try {
 					documentFile = new File("mail_list.txt");
 					pw = new FileWriter("mail_list.txt", true);
 					mailTxtField.write(pw);
 					
-					System.lineSeparator();
+//	            	pw.write(System.getProperty("line.separator"));
+//
+//					do {
+//		            	pw.write(System.getProperty("line.separator"));
+//					} while (pw != null);
+//					
+//		            for (int num = 1; num < 11; num++) {
+//		            	pw.write("rad: " + pw + System.getProperty("line.separator"));
+////		                writer.write("This is line " + num + System.getProperty( "line.separator" ));
+//		            }
+//					pw.append(System.lineSeparator());
 
-
-
-//					System.out.println("\n" + mailTxtField);
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
@@ -152,12 +146,14 @@ public class GUI_User {
 
 				String puname = userTxtField.getText();
 				String ppaswd = passField.getText();
-				if (puname.equals("123") && ppaswd.equals("123")) {
+				ph.readProperties("config_properties.txt");
+
+				if (puname.equals("123") && ppaswd.equals(ph.getProperty("custPass"))) {
 					new GUI_Customer();
 					frame.dispose();
 					
-				} else if (puname.equals("456") && ppaswd.equals("456")) {
-					GUI_StoreStaff sStaff = new GUI_StoreStaff();
+				} else if (puname.equals("456") && ppaswd.equals(ph.getProperty("staffPass"))) {
+					new GUI_StoreStaff();
 					frame.dispose();
 
 				} else {
@@ -170,29 +166,4 @@ public class GUI_User {
 		});
 		frame.setVisible(true);
 	}
-//	
-//	private void playMusic() {
-//		try {
-//			File f = new File("Audio/EscapeFromNewYork.wav");
-//			AudioInputStream audio = AudioSystem.getAudioInputStream(f);
-//			AudioFormat format;
-//			format = audio.getFormat();
-//			SourceDataLine auline;
-//			DataLine.Info info = new DataLine.Info(SourceDataLine.class, format);
-//			auline = (SourceDataLine) AudioSystem.getLine(info);
-//			auline.open(format);
-//			auline.start();
-//			int nBytesRead = 0;
-//			byte[] abData = new byte[524288];
-//			while (nBytesRead != -1) {
-//				nBytesRead = audio.read(abData, 0, abData.length);
-//				if (nBytesRead >= 0) {
-//					auline.write(abData, 0, nBytesRead);
-//				}
-//			}
-//		} catch (Exception E) {
-//			System.out.println(E.getMessage());
-//		}
-//	}
-
 }
